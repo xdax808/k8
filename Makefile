@@ -8,7 +8,7 @@ CROSS_COMPILER = $(PREFIX)gcc
 ODUMP = objdump
 
 CFLAGS = -std=gnu99 -ffreestanding -Wall -Wextra
-CFLAGS  += -O0
+CFLAGS  += -O2
 LDFLAGS = -T linker.ld -nostdlib
 
 # Zielname
