@@ -1,0 +1,12 @@
+
+main.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_main>:
+   0:	bb 00 00 00 e0       	mov    $0xe0000000,%ebx
+   5:	0f b7 03             	movzwl (%rbx),%eax
+   8:	83 c0 01             	add    $0x1,%eax
+   b:	66 89 03             	mov    %ax,(%rbx)
+   e:	eb f5                	jmp    5 <_main+0x5>
