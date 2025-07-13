@@ -5,8 +5,80 @@ kernel.elf:     file format elf64-x86-64
 Disassembly of section .text:
 
 0000000000100000 <kernel_main>:
-  100000:	bb 00 80 0b 00       	mov    $0xb8000,%ebx
-  100005:	0f b7 03             	movzwl (%rbx),%eax
-  100008:	83 c0 01             	add    $0x1,%eax
-  10000b:	66 89 03             	mov    %ax,(%rbx)
-  10000e:	eb f5                	jmp    100005 <kernel_main+0x5>
+  100000:	55                   	push   %rbp
+  100001:	48 89 e5             	mov    %rsp,%rbp
+  100004:	48 83 ec 10          	sub    $0x10,%rsp
+  100008:	48 c7 45 f8 00 80 0b 	movq   $0xb8000,-0x8(%rbp)
+  10000f:	00 
+  100010:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  100014:	0f b7 00             	movzwl (%rax),%eax
+  100017:	8d 50 01             	lea    0x1(%rax),%edx
+  10001a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10001e:	66 89 10             	mov    %dx,(%rax)
+  100021:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  100025:	0f b7 00             	movzwl (%rax),%eax
+  100028:	0f b7 d0             	movzwl %ax,%edx
+  10002b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10002f:	48 83 c0 04          	add    $0x4,%rax
+  100033:	0f b7 00             	movzwl (%rax),%eax
+  100036:	0f b7 c8             	movzwl %ax,%ecx
+  100039:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10003d:	48 83 c0 02          	add    $0x2,%rax
+  100041:	0f b7 00             	movzwl (%rax),%eax
+  100044:	0f b7 c0             	movzwl %ax,%eax
+  100047:	89 ce                	mov    %ecx,%esi
+  100049:	89 c7                	mov    %eax,%edi
+  10004b:	e8 b0 00 00 00       	call   100100 <tst>
+  100050:	89 45 f4             	mov    %eax,-0xc(%rbp)
+  100053:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  100056:	89 c2                	mov    %eax,%edx
+  100058:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10005c:	66 89 10             	mov    %dx,(%rax)
+  10005f:	90                   	nop
+  100060:	eb ae                	jmp    100010 <kernel_main+0x10>
+  100062:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  100069:	00 00 00 
+  10006c:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  100073:	00 00 00 
+  100076:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  10007d:	00 00 00 
+  100080:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  100087:	00 00 00 
+  10008a:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  100091:	00 00 00 
+  100094:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  10009b:	00 00 00 
+  10009e:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000a5:	00 00 00 
+  1000a8:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000af:	00 00 00 
+  1000b2:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000b9:	00 00 00 
+  1000bc:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000c3:	00 00 00 
+  1000c6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000cd:	00 00 00 
+  1000d0:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000d7:	00 00 00 
+  1000da:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000e1:	00 00 00 
+  1000e4:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000eb:	00 00 00 
+  1000ee:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  1000f5:	00 00 00 
+  1000f8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  1000ff:	00 
+
+0000000000100100 <tst>:
+  100100:	55                   	push   %rbp
+  100101:	48 89 e5             	mov    %rsp,%rbp
+  100104:	89 7d fc             	mov    %edi,-0x4(%rbp)
+  100107:	89 75 f8             	mov    %esi,-0x8(%rbp)
+  10010a:	89 55 f4             	mov    %edx,-0xc(%rbp)
+  10010d:	8b 55 fc             	mov    -0x4(%rbp),%edx
+  100110:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  100113:	01 c2                	add    %eax,%edx
+  100115:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  100118:	01 d0                	add    %edx,%eax
+  10011a:	5d                   	pop    %rbp
+  10011b:	c3                   	ret

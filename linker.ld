@@ -7,6 +7,8 @@ SECTIONS
 
     .text :
     {
+        *(.text.init)
+        . = ALIGN(0x100);
         *(.text*)
     }
 
