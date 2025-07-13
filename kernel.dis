@@ -1,0 +1,12 @@
+
+kernel.elf:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000100000 <kernel_main>:
+  100000:	bb 00 80 0b 00       	mov    $0xb8000,%ebx
+  100005:	0f b7 03             	movzwl (%rbx),%eax
+  100008:	83 c0 01             	add    $0x1,%eax
+  10000b:	66 89 03             	mov    %ax,(%rbx)
+  10000e:	eb f5                	jmp    100005 <kernel_main+0x5>
